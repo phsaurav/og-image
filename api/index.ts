@@ -1,8 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'http';
-import fetch from 'node-fetch';
 import { getScreenshot } from './_lib/chromium';
 import { parseRequest } from './_lib/parser';
-import { getHtml } from './_lib/template';
 
 const isDev = !process.env.AWS_REGION;
 const isHtmlDebug = process.env.OG_HTML_DEBUG === '1';
@@ -10,7 +8,8 @@ const isHtmlDebug = process.env.OG_HTML_DEBUG === '1';
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
     try {
         const parsedReq = parseRequest(req);
-
+				// const response = await fetch(`https://api.tutor-media.liilab.com/api/post/v1/posts/${parsedReq.text}`)
+				// const data = await response.json()
         const { text, fileType } = parsedReq;
         const file = await getScreenshot(text, fileType, isDev);
         res.statusCode = 200;

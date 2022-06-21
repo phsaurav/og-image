@@ -16,7 +16,7 @@ async function getPage(isDev: boolean) {
 export async function getScreenshot(text: string, type: FileType, isDev: boolean) {
     const page = await getPage(isDev);
     await page.setViewport({ width: 1200, height: 630 });
-    await page.goto(`https://tutor-media.liilab.com/tutor/home/og/${text}`);
+    await page.waitForLoadState({ waitUntil: 'domcontentloaded' });
     const file = await page.screenshot({ type });
     return file;
 }
