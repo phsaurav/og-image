@@ -9,8 +9,8 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
         const parsedReq = parseRequest(req);
 				// const response = await fetch(`https://api.tutor-media.liilab.com/api/post/v1/posts/${parsedReq.text}`)
 				// const data = await response.json()
-        const { text, fileType } = parsedReq;
-        const file = await getScreenshot(text, fileType, isDev);
+        const { fileType } = parsedReq;
+        const file = await getScreenshot(fileType, isDev);
         res.statusCode = 200;
         res.setHeader('Content-Type', `image/${fileType}`);
         res.setHeader('Cache-Control', `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`);
