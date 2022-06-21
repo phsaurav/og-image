@@ -109,6 +109,8 @@ export async function getHtml(parsedReq: ParsedRequest) {
 
 		const response = await fetch(`https://api.tutor-media.liilab.com/api/post/v1/posts/${text}`)
 		const data = await response.json().result;
+		console.log(data);
+		
     return `<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
@@ -127,7 +129,7 @@ export async function getHtml(parsedReq: ParsedRequest) {
             </div>
             <div class="spacer">
             <div class="heading">${emojify(
-                md ? marked(data && data?.circular_title) : sanitizeHtml(data && data?.circular_title)
+                md ? marked(text) : sanitizeHtml(text)
             )}
             </div>
         </div>
