@@ -12,7 +12,9 @@
 		"puppeteer-core": "13.1.2",
 		"twemoji": "13.0.1",
 		"node-fetch": "2.6.7",
-		"@types/node-fetch": "2.6.1"
+		"@types/node-fetch": "2.6.1",
+		"cors": "2.8.5",
+		"@types/cors": "2.8.12"
 	},
 	"devDependencies": {
 		"@types/marked": "4.0.1",
