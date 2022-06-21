@@ -1,6 +1,7 @@
 
 import { readFileSync } from 'fs';
 import { marked } from 'marked';
+import fetch from "node-fetch";
 import { sanitizeHtml } from './sanitizer';
 import { ParsedRequest } from './types';
 const twemoji = require('twemoji');
@@ -10,7 +11,6 @@ const emojify = (text: string) => twemoji.parse(text, twOptions);
 const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString('base64');
 const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
 const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
-import fetch from "node-fetch";
 
 function getCss(theme: string, fontSize: string) {
     let background = 'white';
@@ -104,13 +104,13 @@ function getCss(theme: string, fontSize: string) {
     }`;
 }
 
-export function getHtml(parsedReq: ParsedRequest) {
+export async function getHtml(parsedReq: ParsedRequest) {
     const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
 
 		let postData = {circular_title: ''};
 
-		fetch(`https://api.tutor-media.liilab.com/api/post/v1/posts/${text}`).then(res => res.json()).then(data => postData = data)
-
+		const response = await fetch(`https://api.tutor-media.liilab.com/api/post/v1/posts/${text}`)
+		postData = await response.json();
     return `<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
