@@ -3,7 +3,7 @@ module.exports = {
 		return [
 			{
 				source: "/api/:path*",
-				destination: "https://phs-og-image.vercel.app/:path*",
+				destination: "https://api.example.com/:path*",
 			},
 		];
 	},
