@@ -107,7 +107,7 @@ export function getHtml(data:any, parsedReq: ParsedRequest) {
     const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
 		
 
-		console.log(data);
+		console.log(text);
 		
     return `<!DOCTYPE html>
 <html>
