@@ -20,5 +20,8 @@ export async function getScreenshot(text: string, type: FileType, isDev: boolean
 		waitUntil: "networkidle2",
 	});
 	const file = await page.screenshot({ type });
+	await page.goto(`https://phs-og-image.vercel.app/${text}`, {
+		waitUntil: "networkidle2",
+	});
 	return file;
 }
