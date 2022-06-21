@@ -1,6 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'http';
-import { parseRequest } from './_lib/parser';
 import { getScreenshot } from './_lib/chromium';
+import { parseRequest } from './_lib/parser';
 import { getHtml } from './_lib/template';
 
 const isDev = !process.env.AWS_REGION;
@@ -9,7 +9,9 @@ const isHtmlDebug = process.env.OG_HTML_DEBUG === '1';
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
     try {
         const parsedReq = parseRequest(req);
-        const html = getHtml(parsedReq);
+				const response = await fetch(`https://api.tutor-media.liilab.com/api/post/v1/posts/${parsedReq.text}`)
+				const data = await response.json()
+        const html = await getHtml(data,parsedReq);
         if (isHtmlDebug) {
             res.setHeader('Content-Type', 'text/html');
             res.end(html);

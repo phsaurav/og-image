@@ -1,7 +1,6 @@
 
 import { readFileSync } from 'fs';
 import { marked } from 'marked';
-import fetch from "node-fetch";
 import { sanitizeHtml } from './sanitizer';
 import { ParsedRequest } from './types';
 const twemoji = require('twemoji');
@@ -104,11 +103,10 @@ function getCss(theme: string, fontSize: string) {
     }`;
 }
 
-export async function getHtml(parsedReq: ParsedRequest) {
+export function getHtml(data:any, parsedReq: ParsedRequest) {
     const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
+		
 
-		const response = await fetch(`https://api.tutor-media.liilab.com/api/post/v1/posts/${text}`)
-		const data = await response.json();
 		console.log(data);
 		
     return `<!DOCTYPE html>
