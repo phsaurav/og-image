@@ -10,14 +10,7 @@ const isHtmlDebug = process.env.OG_HTML_DEBUG === '1';
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
     try {
         const parsedReq = parseRequest(req);
-				const response = await fetch(`https://api.tutor-media.liilab.com/api/post/v1/posts/${parsedReq.text}`)
-				const data = await response.json()
-        const html = await getHtml(data,parsedReq);
-        if (isHtmlDebug) {
-            res.setHeader('Content-Type', 'text/html');
-            res.end(html);
-            return;
-        }
+
         const { text, fileType } = parsedReq;
         const file = await getScreenshot(text, fileType, isDev);
         res.statusCode = 200;
