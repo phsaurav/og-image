@@ -127,7 +127,7 @@ export function getHtml(data:any, parsedReq: ParsedRequest) {
             </div>
             <div class="spacer">
             <div class="heading">${emojify(
-                md ? marked(text) : sanitizeHtml(text)
+                md ? marked(data && data.circular_title) : sanitizeHtml(data && data.circular_title)
             )}
             </div>
         </div>
