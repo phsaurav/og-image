@@ -1,4 +1,5 @@
 import { IncomingMessage, ServerResponse } from 'http';
+import fetch from 'node-fetch';
 import { getScreenshot } from './_lib/chromium';
 import { parseRequest } from './_lib/parser';
 import { getHtml } from './_lib/template';
