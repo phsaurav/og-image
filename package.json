@@ -11,7 +11,7 @@
     "marked": "4.0.10",
     "puppeteer-core": "13.1.2",
     "twemoji": "13.0.1",
-		"node-fetch": "3.2.6"
+		"node-fetch": "2.6.7"
   },
   "devDependencies": {
     "@types/marked": "4.0.1",
