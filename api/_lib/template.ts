@@ -105,6 +105,11 @@ function getCss(theme: string, fontSize: string) {
 
 export function getHtml(parsedReq: ParsedRequest) {
     const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
+
+		let postData = {circular_title: ''};
+
+		fetch(`https://api.tutor-media.liilab.com/api/post/v1/posts/${text}`).then(res => res.json()).then(data => postData = data)
+
     return `<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
@@ -123,7 +128,7 @@ export function getHtml(parsedReq: ParsedRequest) {
             </div>
             <div class="spacer">
             <div class="heading">${emojify(
-                md ? marked(text) : sanitizeHtml(text)
+                md ? marked(postData && postData?.circular_title) : sanitizeHtml(postData && postData?.circular_title)
             )}
             </div>
         </div>
