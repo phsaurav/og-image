@@ -108,7 +108,7 @@ export async function getHtml(parsedReq: ParsedRequest) {
     const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
 
 		const response = await fetch(`https://api.tutor-media.liilab.com/api/post/v1/posts/${text}`)
-		const data = await response.json().result;
+		const data = await response.json();
 		console.log(data);
 		
     return `<!DOCTYPE html>
