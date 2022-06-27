@@ -232,7 +232,18 @@ export function getHtml(parsedReq: ParsedRequest) {
 			<div class="subject-box">
 				<h3 class="version">${medium && mediumOptions[parseInt(medium) - 1]}</h3>
 				<div class="subjects">
-				${subjects && subjects.map((subject: any) => `<div class="subject">◼︎ ${subject}</div>`)}
+				${
+					subjects && subjects.length > 5
+						? subjects
+								.slice(0, 4)
+								.map(
+									(subject: any) =>
+										`<div class="subject">◼︎ ${subject}</div> <div class="subject">◼︎ +${
+											subjects.length - 4
+										} More</div>`
+								)
+						: subjects.map((subject: any) => `<div class="subject">◼︎ ${subject}</div> `)
+				}
 				</div>
 				<div class="budget-div">
 					<h3 class="budget">${budget} TK</h3>
