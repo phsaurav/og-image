@@ -194,6 +194,8 @@ export function getHtml(parsedReq: ParsedRequest) {
 	const students = JSON.parse(studentInfo);
 	const len = students.length;
 
+	const title = text === "both" ? "A Tutor !!!" : text === "male" ? "Male teacher" : "Female Tutor";
+
 	return `<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
@@ -213,8 +215,8 @@ export function getHtml(parsedReq: ParsedRequest) {
 				len === 2 ? students[0].course + "&" + students[1].course : students[0].course
 			}</h3></div>
 			<div class="title-div">
-				<h1 class="title-shaodow">${text}</h1>
-				<h1 class="title">${text}</h1>
+				<h1 class="title-shaodow">${title}</h1>
+				<h1 class="title">${title}</h1>
 			</div>
 			<div class="address">${address}</div>
 			<div class="applyBtn">Apply Now</div>
