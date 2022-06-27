@@ -190,7 +190,7 @@ function getCss() {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-	const { text, address, budget, studentInfo } = parsedReq;
+	const { text, address, budget, studentInfo, subjectLabel } = parsedReq;
 	const students = JSON.parse(studentInfo);
 	const len = students.length;
 
