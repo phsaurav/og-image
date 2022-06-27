@@ -177,7 +177,7 @@ function getCss() {
 		.subject {
 			background-color: white;
 			border: 1px solid #9e9efd;
-			margin: 10px auto;
+			margin: 0px auto;
 			padding: 10px 20px;
 			font-size: 24px;
 			color: #2c2c53;
@@ -226,7 +226,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 			<div class="subject-box">
 				<h3 class="version">English Version</h3>
 				<div class="subjects">
-				${students[0].subjects.map((subject: any) => `<div class="subject">${subject}</div>`)}
+				${students[0].subjects.map((subject: any) => `<div class="subject">◼︎ ${subject}</div>`)}
 				</div>
 				<div class="budget-div">
 					<h3 class="budget">3,000 TK</h3>
