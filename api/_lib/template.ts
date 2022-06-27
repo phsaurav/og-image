@@ -227,11 +227,6 @@ export function getHtml(parsedReq: ParsedRequest) {
 				<h3 class="version">English Version</h3>
 				<div class="subjects">
 				${students[0].subjects.map((subject: any) => `<div class="subject">${subject}</div>`)}
-					<div class="subject">◼︎ General Science</div>
-					<div class="subject">◼︎ Math</div>
-					<div class="subject">◼︎ English</div>
-					<div class="subject">◼︎ English</div>
-					<div class="subject">◼︎ English</div>
 				</div>
 				<div class="budget-div">
 					<h3 class="budget">3,000 TK</h3>
