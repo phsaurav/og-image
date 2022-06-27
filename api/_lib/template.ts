@@ -10,7 +10,6 @@ import { ParsedRequest } from "./types";
 // const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString("base64");
 
 function getCss() {
-
 	return `
 	body {
 		margin: 0px;
@@ -197,14 +196,11 @@ function getCss() {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-	const { text} = parsedReq;
+	const { text } = parsedReq;
 	return `<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
     <title>Generated Image</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-				<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         ${getCss()}
