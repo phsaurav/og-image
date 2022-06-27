@@ -187,7 +187,8 @@ function getCss() {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-	const { text, gender } = parsedReq;
+	const { text, gender, studentInfo } = parsedReq;
+	const students = JSON.parse(studentInfo);
 
 	return `<!DOCTYPE html>
 <html>
@@ -204,7 +205,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     <body>
 		<div class="background grid-container">
 		<div class="banner-left">
-			<div class="class"><h3>For Class 6</h3></div>
+			<div class="class"><h3>For ${students[0].course}</h3></div>
 			<div class="title-div">
 				<h1 class="title-shaodow">${text} Tutor</h1>
 				<h1 class="title">${gender} Tutor</h1>
