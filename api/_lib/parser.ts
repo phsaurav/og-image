@@ -4,14 +4,27 @@ import { ParsedRequest} from "./types";
 
 export function parseRequest(req: IncomingMessage) {
 	console.log("HTTP " + req.url);
-	const {query } = parse(req.url || "/", true);
-	const { gender, studentInfo} = query || {};
+	const { pathname, query } = parse(req.url || "/", true);
+	const { gender, studentInfo } = query || {};
 
+
+	const arr = (pathname || "/").slice(1).split(".");
+	let extension = "";
+	let text = "";
+	if (arr.length === 0) {
+		text = "";
+	} else if (arr.length === 1) {
+		text = arr[0];
+	} else {
+		extension = arr.pop() as string;
+		text = arr.join(".");
+	}
 
 	const parsedRequest: ParsedRequest = {
+		text: decodeURIComponent(text),
 		gender,
-		studentInfo
+		studentInfo,
 	};
-
 	return parsedRequest;
 }
+

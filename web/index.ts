@@ -23,8 +23,6 @@ const ImagePreview = ({ src, onclick, onload, onerror, loading }: ImagePreviewPr
 	);
 };
 
-
-
 interface TextInputProps {
 	value: string;
 	oninput: (val: string) => void;
@@ -44,8 +42,6 @@ const TextInput = ({ value, oninput, small, type = "text", placeholder = "" }: T
 		)
 	);
 };
-
-
 
 interface FieldProps {
 	label: string;
@@ -82,8 +78,6 @@ const Toast = ({ show, message }: ToastProps) => {
 	);
 };
 
-
-
 interface AppState extends ParsedRequest {
 	loading: boolean;
 	showToast: boolean;
@@ -110,6 +104,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
 	};
 	const {
 		gender = "male",
+		text = "**Hello** World",
 		studentInfo = [],
 		widths = [],
 		heights = [],
@@ -137,12 +132,21 @@ const App = (_: any, state: AppState, setState: SetState) => {
 			H(
 				"div",
 				H(Field, {
+					label: "Text Field",
+					input: H(TextInput, {
+						value: text,
+						oninput: (val: string) => {
+							console.log("oninput " + val);
+							setLoadingState({ text: val, overrideUrl: url });
+						},
+					}),
+				}),
+				H(Field, {
 					label: "Gender",
 					input: H(TextInput, {
 						value: gender,
 						oninput: (val: string) => {
 							console.log("oninput " + val);
-							setLoadingState({ gender: val, overrideUrl: url });
 						},
 					}),
 				}),
@@ -152,7 +156,6 @@ const App = (_: any, state: AppState, setState: SetState) => {
 						value: studentInfo,
 						oninput: (val: string) => {
 							console.log("oninput " + val);
-							setLoadingState({ studentInfo: val, overrideUrl: url });
 						},
 					}),
 				})
