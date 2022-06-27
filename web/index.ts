@@ -103,7 +103,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
 		setState({ ...newState, loading: true });
 	};
 	const {
-		gender = "male",
+		address = "",
 		text = "**Hello** World",
 		studentInfo = [],
 		widths = [],
@@ -142,9 +142,9 @@ const App = (_: any, state: AppState, setState: SetState) => {
 					}),
 				}),
 				H(Field, {
-					label: "Gender",
+					label: "Address",
 					input: H(TextInput, {
-						value: gender,
+						value: address,
 						oninput: (val: string) => {
 							console.log("oninput " + val);
 						},

@@ -187,8 +187,9 @@ function getCss() {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-	const { text, gender, studentInfo } = parsedReq;
+	const { text, address, studentInfo } = parsedReq;
 	const students = JSON.parse(studentInfo);
+	const len = students.length;
 
 	return `<!DOCTYPE html>
 <html>
@@ -205,12 +206,14 @@ export function getHtml(parsedReq: ParsedRequest) {
     <body>
 		<div class="background grid-container">
 		<div class="banner-left">
-			<div class="class"><h3>For ${students[0].course}</h3></div>
+			<div class="class"><h3>For ${
+				len === 2 ? students[0].course + "&" + students[1].course : students[0].course
+			}</h3></div>
 			<div class="title-div">
-				<h1 class="title-shaodow">${text} Tutor</h1>
-				<h1 class="title">${gender} Tutor</h1>
+				<h1 class="title-shaodow">${text}</h1>
+				<h1 class="title">${text}</h1>
 			</div>
-			<div class="address">শিবগঞ্জ/ উপশহর ABC পয়েন্টের আগে মেইন রোড</div>
+			<div class="address">${address}</div>
 			<div class="applyBtn">Apply Now</div>
 		</div>
 		<div class="banner-right">
@@ -223,6 +226,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 			<div class="subject-box">
 				<h3 class="version">English Version</h3>
 				<div class="subjects">
+				${students[0].subjects.map((subject: any) => `<div class="subject">${subject}</div>`)}
 					<div class="subject">◼︎ General Science</div>
 					<div class="subject">◼︎ Math</div>
 					<div class="subject">◼︎ English</div>

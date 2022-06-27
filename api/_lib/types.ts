@@ -2,6 +2,6 @@ export type FileType = "png" | "jpeg";
 
 export interface ParsedRequest {
 	text: string;
-	gender?: string | string[] | undefined;
+	address?: string | string[] | undefined;
 	studentInfo?: any;
 }
