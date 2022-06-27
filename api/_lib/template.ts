@@ -119,7 +119,6 @@ function getCss(theme: string, fontSize: string) {
 			height: 630px;
 			margin: 0;
 			padding: 0;
-			background-image: url("https://phs-og-image.vercel.app/Banner.png");
 			background-repeat: no-repeat;
 			background-size: 1200px 630px;
 		}
