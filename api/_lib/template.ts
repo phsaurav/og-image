@@ -89,7 +89,7 @@ function getCss() {
 			display: inline-block;
 			font-size: 32px;
 			font-weight: 600;
-			margin-top: 20px;
+			margin-top: 30px;
 			margin-left: 85px;
 			padding: 12px 80px;
 			border-radius: 5px;
