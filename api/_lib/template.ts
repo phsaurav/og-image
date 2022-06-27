@@ -237,11 +237,8 @@ export function getHtml(parsedReq: ParsedRequest) {
 						? subjects
 								.slice(0, 4)
 								.map(
-									(subject: any) =>
-										`<div class="subject">◼︎ ${subject}</div> <div class="subject">◼︎ +${
-											subjects.length - 4
-										} More</div>`
-								)
+									(subject: any) => `<div class="subject">◼︎ ${subject}</div> `
+								)`<div class="subject">◼︎ +${subjects.length - 4} More Subjects</div>`
 						: subjects.map((subject: any) => `<div class="subject">◼︎ ${subject}</div> `)
 				}
 				</div>
