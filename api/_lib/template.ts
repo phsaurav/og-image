@@ -191,6 +191,7 @@ function getCss() {
 
 export function getHtml(parsedReq: ParsedRequest) {
 	const { text, address, budget, medium, group, course, subjectLabel } = parsedReq;
+	const subjects = subjectLabel.split(",");
 
 	const title = text === "both" ? "A Tutor !!!" : text === "male" ? "Male teacher" : "Female Tutor";
 
@@ -227,7 +228,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 			<div class="subject-box">
 				<h3 class="version">${medium && mediumOptions[parseInt(medium) - 1]}</h3>
 				<div class="subjects">
-				${subjectLabel && subjectLabel.map((subject: any) => `<div class="subject">◼︎ ${subject}</div>`)}
+				${subjects && subjects.map((subject: any) => `<div class="subject">◼︎ ${subject}</div>`)}
 				</div>
 				<div class="budget-div">
 					<h3 class="budget">${budget} TK</h3>
