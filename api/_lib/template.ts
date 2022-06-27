@@ -1,12 +1,4 @@
-// import { readFileSync } from "fs";
 import { ParsedRequest } from "./types";
-// const twemoji = require("twemoji");
-// const twOptions = { folder: "svg", ext: ".svg" };
-// const emojify = (text: string) => twemoji.parse(text, twOptions);
-
-// const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString("base64");
-// const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString("base64");
-// const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString("base64");
 
 function getCss() {
 	return `
@@ -195,9 +187,7 @@ function getCss() {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-	const { text } = parsedReq;
-
-	console.log(text);
+	const { gender } = parsedReq;
 
 	return `<!DOCTYPE html>
 <html>
@@ -216,8 +206,8 @@ export function getHtml(parsedReq: ParsedRequest) {
 		<div class="banner-left">
 			<div class="class"><h3>For Class 6</h3></div>
 			<div class="title-div">
-				<h1 class="title-shaodow">${text} Tutor</h1>
-				<h1 class="title">Female Tutor</h1>
+				<h1 class="title-shaodow">${gender} Tutor</h1>
+				<h1 class="title">${gender} Tutor</h1>
 			</div>
 			<div class="address">শিবগঞ্জ/ উপশহর ABC পয়েন্টের আগে মেইন রোড</div>
 			<div class="applyBtn">Apply Now</div>
