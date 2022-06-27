@@ -237,11 +237,10 @@ export function getHtml(parsedReq: ParsedRequest) {
 						? subjects
 								.slice(0, 4)
 								.map((subject: any) => `<div class="subject">◼︎ ${subject}</div> `) +
-						  ` <div class="subject">◼︎ +${subjects.length - 4} More Subjects</div>`
-						: subjects.map(
-								(subject: any) =>
-									`<div class="subject" style="margin-top:10px; text-align:center">${subject}</div> `
-						  )
+						  ` <div class="subject" style="margin-top:10px; text-align:center">+${
+								subjects.length - 4
+						  } More Subjects</div>`
+						: subjects.map((subject: any) => `<div class="subject" >◼︎ ${subject}</div> `)
 				}
 				</div>
 				<div class="budget-div">
