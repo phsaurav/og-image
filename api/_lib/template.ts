@@ -187,9 +187,9 @@ function getCss() {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-	const { gender, studentInfo } = parsedReq;
+	const { text } = parsedReq;
 
-	console.log(gender, studentInfo);
+	console.log(text);
 
 	return `
 		<!DOCTYPE html>
@@ -208,7 +208,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 					<div class="banner-left">
 						<div class="class"><h3>For Class 6</h3></div>
 						<div class="title-div">
-							<h1 class="title-shaodow">${gender} Tutor</h1>
+							<h1 class="title-shaodow">${text} Tutor</h1>
 							<h1 class="title">Female Tutor</h1>
 						</div>
 						<div class="address">শিবগঞ্জ/ উপশহর ABC পয়েন্টের আগে মেইন রোড</div>
