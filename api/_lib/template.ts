@@ -209,25 +209,25 @@ export function getHtml(parsedReq: ParsedRequest) {
     <body>
 		<div class="background grid-container">
 		<div class="banner-left">
-			<div class="class"><h3>For ${course}</h3></div>
+			<div class="class"><h3>For ${course && course}</h3></div>
 			<div class="title-div">
-				<h1 class="title-shaodow">${title}</h1>
-				<h1 class="title">${title}</h1>
+				<h1 class="title-shaodow">${title && title}</h1>
+				<h1 class="title">${title && title}</h1>
 			</div>
-			<div class="address">${address}</div>
+			<div class="address">${address && address}</div>
 			<div class="applyBtn">Apply Now</div>
 		</div>
 		<div class="banner-right">
 			<div class="group-div">
 				<div class="group">
-					<h3 class="group-title">Group: ${groupOptions[parseInt(group) - 1]}</h3>
-					<h3 class="group-shadow">Group: ${groupOptions[parseInt(group) - 1]}</h3>
+					<h3 class="group-title">Group: ${group && groupOptions[parseInt(group) - 1]}</h3>
+					<h3 class="group-shadow">Group: ${group && groupOptions[parseInt(group) - 1]}</h3>
 				</div>
 			</div>
 			<div class="subject-box">
-				<h3 class="version">${mediumOptions[parseInt(medium) - 1]}</h3>
+				<h3 class="version">${medium && mediumOptions[parseInt(medium) - 1]}</h3>
 				<div class="subjects">
-				${subjectLabel.map((subject: any) => `<div class="subject">◼︎ ${subject}</div>`)}
+				${subjectLabel && subjectLabel.map((subject: any) => `<div class="subject">◼︎ ${subject}</div>`)}
 				</div>
 				<div class="budget-div">
 					<h3 class="budget">${budget} TK</h3>
