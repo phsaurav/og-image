@@ -219,8 +219,8 @@ export function getHtml(parsedReq: ParsedRequest) {
 		<div class="banner-right">
 			<div class="group-div">
 				<div class="group">
-					<h3 class="group-title">${students[0].group}</h3>
-					<h3 class="group-shadow">${students[0].group}</h3>
+					<h3 class="group-title">Group: ${students[0].group}</h3>
+					<h3 class="group-shadow">Group: ${students[0].group}</h3>
 				</div>
 			</div>
 			<div class="subject-box">
