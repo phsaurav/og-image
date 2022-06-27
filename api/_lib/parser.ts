@@ -5,7 +5,7 @@ import { ParsedRequest } from "./types";
 export function parseRequest(req: IncomingMessage) {
 	console.log("HTTP " + req.url);
 	const { pathname, query } = parse(req.url || "/", true);
-	const { address, studentInfo } = query || {};
+	const { address,budget, studentInfo } = query || {};
 
 	const arr = (pathname || "/").slice(1).split(".");
 	let text = "";
@@ -21,6 +21,7 @@ export function parseRequest(req: IncomingMessage) {
 	const parsedRequest: ParsedRequest = {
 		text: decodeURIComponent(text),
 		address,
+		budget,
 		studentInfo,
 	};
 	return parsedRequest;

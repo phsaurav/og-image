@@ -4,4 +4,5 @@ export interface ParsedRequest {
 	text: string;
 	address?: string | string[] | undefined;
 	studentInfo?: any;
+	budget?: any;
 }

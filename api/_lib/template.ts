@@ -187,7 +187,7 @@ function getCss() {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-	const { text, address, studentInfo } = parsedReq;
+	const { text, address, budget, studentInfo } = parsedReq;
 	const students = JSON.parse(studentInfo);
 	const len = students.length;
 
@@ -219,17 +219,17 @@ export function getHtml(parsedReq: ParsedRequest) {
 		<div class="banner-right">
 			<div class="group-div">
 				<div class="group">
-					<h3 class="group-title">Group: Science</h3>
-					<h3 class="group-shadow">Group: Science</h3>
+					<h3 class="group-title">${students[0].group}</h3>
+					<h3 class="group-shadow">${students[0].group}</h3>
 				</div>
 			</div>
 			<div class="subject-box">
-				<h3 class="version">English Version</h3>
+				<h3 class="version">${students[0].medium}</h3>
 				<div class="subjects">
 				${students[0].subjects.map((subject: any) => `<div class="subject">◼︎ ${subject}</div>`)}
 				</div>
 				<div class="budget-div">
-					<h3 class="budget">3,000 TK</h3>
+					<h3 class="budget">${budget} TK</h3>
 				</div>
 			</div>
 		</div>
