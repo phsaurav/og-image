@@ -190,9 +190,7 @@ function getCss() {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-	const { text, address, budget, studentInfo, subjectLabel } = parsedReq;
-	const students = JSON.parse(studentInfo);
-	const len = students.length;
+	const { text, address, budget, medium, group, course, subjectLabel } = parsedReq;
 
 	const title = text === "both" ? "A Tutor !!!" : text === "male" ? "Male teacher" : "Female Tutor";
 
@@ -211,9 +209,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     <body>
 		<div class="background grid-container">
 		<div class="banner-left">
-			<div class="class"><h3>For ${
-				len === 2 ? students[0].course + "&" + students[1].course : students[0].course
-			}</h3></div>
+			<div class="class"><h3>For ${course}</h3></div>
 			<div class="title-div">
 				<h1 class="title-shaodow">${title}</h1>
 				<h1 class="title">${title}</h1>
@@ -224,14 +220,14 @@ export function getHtml(parsedReq: ParsedRequest) {
 		<div class="banner-right">
 			<div class="group-div">
 				<div class="group">
-					<h3 class="group-title">Group: ${groupOptions[parseInt(students[0].group) - 1]}</h3>
-					<h3 class="group-shadow">Group: ${groupOptions[parseInt(students[0].group) - 1]}</h3>
+					<h3 class="group-title">Group: ${groupOptions[parseInt(group) - 1]}</h3>
+					<h3 class="group-shadow">Group: ${groupOptions[parseInt(group) - 1]}</h3>
 				</div>
 			</div>
 			<div class="subject-box">
-				<h3 class="version">${mediumOptions[students[0].medium - 1]}</h3>
+				<h3 class="version">${mediumOptions[parseInt(medium) - 1]}</h3>
 				<div class="subjects">
-				${students[0].subjects.map((subject: any) => `<div class="subject">◼︎ ${subject}</div>`)}
+				${subjectLabel.map((subject: any) => `<div class="subject">◼︎ ${subject}</div>`)}
 				</div>
 				<div class="budget-div">
 					<h3 class="budget">${budget} TK</h3>

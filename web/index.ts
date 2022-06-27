@@ -105,7 +105,6 @@ const App = (_: any, state: AppState, setState: SetState) => {
 	const {
 		address = "",
 		text = "**Hello** World",
-		studentInfo = [],
 		widths = [],
 		heights = [],
 		showToast = false,
@@ -145,15 +144,6 @@ const App = (_: any, state: AppState, setState: SetState) => {
 					label: "Address",
 					input: H(TextInput, {
 						value: address,
-						oninput: (val: string) => {
-							console.log("oninput " + val);
-						},
-					}),
-				}),
-				H(Field, {
-					label: "Student Info",
-					input: H(TextInput, {
-						value: studentInfo,
 						oninput: (val: string) => {
 							console.log("oninput " + val);
 						},
