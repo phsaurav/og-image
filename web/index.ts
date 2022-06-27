@@ -150,7 +150,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
 						value: studentInfo,
 						oninput: (val: string) => {
 							console.log("oninput " + val);
-							setLoadingState({ studentInfoå: val, overrideUrl: url });
+							setLoadingState({ studentInfo: val, overrideUrl: url });
 						},
 					}),
 				})
