@@ -119,6 +119,7 @@ function getCss(theme: string, fontSize: string) {
 			height: 630px;
 			margin: 0;
 			padding: 0;
+			background-image: url("https://phs-og-image.vercel.app/Banner.jpg");
 			background-repeat: no-repeat;
 			background-size: 1200px 630px;
 		}
@@ -283,7 +284,7 @@ function getCss(theme: string, fontSize: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-	const { text, theme, fontSize} = parsedReq;
+	const { text, theme, fontSize } = parsedReq;
 
 	console.log(text);
 
@@ -331,17 +332,3 @@ export function getHtml(parsedReq: ParsedRequest) {
     </body>
 </html>`;
 }
-
-// function getImage(src: string, width = "auto", height = "225") {
-// 	return `<img
-//         class="logo"
-//         alt="Generated Image"
-//         src="${sanitizeHtml(src)}"
-//         width="${sanitizeHtml(width)}"
-//         height="${sanitizeHtml(height)}"
-//     />`;
-// }
-
-// function getPlusSign(i: number) {
-// 	return i === 0 ? "" : '<div class="plus">+</div>';
-// }
