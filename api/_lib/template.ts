@@ -1,6 +1,5 @@
 import { ParsedRequest } from "./types";
 
-const groupOptions = ["Science", , "Arts", , "Commerce", , "General"];
 const mediumOptions = ["Bangla Medium", "English Medium", "English Version", "Madrasa Medium"];
 
 function getCss() {
@@ -221,8 +220,12 @@ export function getHtml(parsedReq: ParsedRequest) {
 		<div class="banner-right">
 			<div class="group-div">
 				<div class="group">
-					<h3 class="group-title">Group: ${group && groupOptions[parseInt(group) - 1]}</h3>
-					<h3 class="group-shadow">Group: ${group && groupOptions[parseInt(group) - 1]}</h3>
+					<h3 class="group-title">Group: ${
+						group && group.charAt(0).toUpperCase() + group.substr(1).toLowerCase()
+					}</h3>
+					<h3 class="group-shadow">Group: ${
+						group && group.charAt(0).toUpperCase() + group.substr(1).toLowerCase()
+					}</h3>
 				</div>
 			</div>
 			<div class="subject-box">
