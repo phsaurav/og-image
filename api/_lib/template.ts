@@ -192,7 +192,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 	const { text, address, budget, medium, group, course, subjectLabel } = parsedReq;
 	const subjects = subjectLabel.split(",");
 
-	const title = text === "both" ? "A Tutor !!!" : text === "male" ? "Male teacher" : "Female Tutor";
+	const title = text === "both" ? "A Teacher !!!" : text === "male" ? "Male teacher" : "Female Tutor";
 
 	return `<!DOCTYPE html>
 <html>
