@@ -1,27 +1,25 @@
-
-import { readFileSync } from 'fs';
-import { marked } from 'marked';
-import { sanitizeHtml } from './sanitizer';
-import { ParsedRequest } from './types';
-const twemoji = require('twemoji');
-const twOptions = { folder: 'svg', ext: '.svg' };
+import { readFileSync } from "fs";
+import { sanitizeHtml } from "./sanitizer";
+import { ParsedRequest } from "./types";
+const twemoji = require("twemoji");
+const twOptions = { folder: "svg", ext: ".svg" };
 const emojify = (text: string) => twemoji.parse(text, twOptions);
 
-const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString('base64');
-const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
-const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
+const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString("base64");
+const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString("base64");
+const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString("base64");
 
 function getCss(theme: string, fontSize: string) {
-    let background = 'white';
-    let foreground = 'black';
-    let radial = 'lightgray';
+	let background = "white";
+	let foreground = "black";
+	let radial = "lightgray";
 
-    if (theme === 'dark') {
-        background = 'black';
-        foreground = 'white';
-        radial = 'dimgray';
-    }
-    return `
+	if (theme === "dark") {
+		background = "black";
+		foreground = "white";
+		radial = "dimgray";
+	}
+	return `
     @font-face {
         font-family: 'Inter';
         font-style:  normal;
@@ -103,47 +101,67 @@ function getCss(theme: string, fontSize: string) {
     }`;
 }
 
-export function getHtml(data:any, parsedReq: ParsedRequest) {
-    const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
+export function getHtml(parsedReq: ParsedRequest) {
+	const { gender, studentInfo } = parsedReq;
+
+	console.log(gender, studentInfo);
+
+	return `
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<title>Generated OG:Image</title>
+				<link rel="stylesheet" href="styles.css" />
+			</head>
+			<body>
+				<div class="background grid-container">
+					<div class="banner-left">
+						<div class="class"><h3>For Class 6</h3></div>
+						<div class="title-div">
+							<h1 class="title-shaodow">${gender} Tutor</h1>
+							<h1 class="title">Female Tutor</h1>
+						</div>
+						<div class="address">শিবগঞ্জ/ উপশহর ABC পয়েন্টের আগে মেইন রোড</div>
+						<div class="applyBtn">Apply Now</div>
+					</div>
+					<div class="banner-right">
+						<div class="group-div">
+							<div class="group">
+								<h3 class="group-title">Group: Science</h3>
+								<h3 class="group-shadow">Group: Science</h3>
+							</div>
+						</div>
+						<div class="subject-box">
+							<h3 class="version">English Version</h3>
+							<div class="subjects">
+								<div class="subject">◼︎ General Science</div>
+								<div class="subject">◼︎ Math</div>
+								<div class="subject">◼︎ English</div>
+								<div class="subject">◼︎ English</div>
+								<div class="subject">◼︎ English</div>
+							</div>
+							<div class="budget-div">
+								<h3 class="budget">3,000 TK</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</body>
+		</html>
 		
-		console.log(text);
-		
-    return `<!DOCTYPE html>
-<html>
-    <meta charset="utf-8">
-    <title>Generated Image</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        ${getCss(theme, fontSize)}
-    </style>
-    <body>
-        <div>
-            <div class="spacer">
-            <div class="logo-wrapper">
-                ${images.map((img, i) =>
-                    getPlusSign(i) + getImage(img, widths[i], heights[i])
-                ).join('')}
-            </div>
-            <div class="spacer">
-            <div class="heading">${emojify(
-                md ? marked(data && data.circular_title) : sanitizeHtml(data && data.circular_title)
-            )}
-            </div>
-        </div>
-    </body>
-</html>`;
+`;
 }
 
-function getImage(src: string, width ='auto', height = '225') {
-    return `<img
+function getImage(src: string, width = "auto", height = "225") {
+	return `<img
         class="logo"
         alt="Generated Image"
         src="${sanitizeHtml(src)}"
         width="${sanitizeHtml(width)}"
         height="${sanitizeHtml(height)}"
-    />`
+    />`;
 }
 
 function getPlusSign(i: number) {
-    return i === 0 ? '' : '<div class="plus">+</div>';
+	return i === 0 ? "" : '<div class="plus">+</div>';
 }

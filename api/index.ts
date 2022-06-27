@@ -2,8 +2,10 @@ import Cors from "cors";
 import { IncomingMessage, ServerResponse } from "http";
 import { getScreenshot } from "./_lib/chromium";
 import { parseRequest } from "./_lib/parser";
+import { getHtml } from "./_lib/template";
 
 const isDev = !process.env.AWS_REGION;
+const isHtmlDebug = process.env.OG_HTML_DEBUG === "1";
 
 const cors = Cors({
 	methods: ["GET", "HEAD"],
@@ -25,12 +27,17 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
 	await runMiddleware(req, res, cors);
 	try {
 		const parsedReq = parseRequest(req);
+		const html = getHtml(parsedReq);
+		if (isHtmlDebug) {
+			res.setHeader("Content-Type", "text/html");
+			res.end(html);
+			return;
+		}
 		// const response = await fetch(`https://api.tutor-media.liilab.com/api/post/v1/posts/${parsedReq.text}`)
 		// const data = await response.json()
-		const { text, fileType } = parsedReq;
-		const file = await getScreenshot(text, fileType, isDev);
+		const file = await getScreenshot(html, "jpeg", isDev);
 		res.statusCode = 200;
-		res.setHeader("Content-Type", `image/${fileType}`);
+		res.setHeader("Content-Type", `image/jpeg`);
 		res.setHeader(
 			"Cache-Control",
 			`public, immutable, no-transform, s-maxage=31536000, max-age=31536000`
